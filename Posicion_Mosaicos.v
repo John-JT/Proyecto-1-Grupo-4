@@ -25,22 +25,21 @@ module Posicion_Mosaicos(
     input  [9:0] Qh,
     input resetM,
     input reloj,
-    output  wire_BIT_FUENTE,
-    output ANDD1,ANDD2,ORD,ANDJ,ANDV
+    output  wire_BIT_FUENTE
     );
     
     parameter ROM_WIDTH = 8;
     reg [ROM_WIDTH-1:0] DATO_MOSAICO;
     reg [5:0] M_v;
     reg [6:0] M_h;
-    reg [3:0] SELEC_PX; //reg [2:0] SELEC_PX;
+    reg [3:0] SELEC_PX; 
     reg [1:0]CARACTER;
     reg BIT_FUENTE;
     //Bit para Letras
     reg LetraD = 1'b0;
     reg LetraJ = 1'b0;
     //Compuertas 
-    reg and0,and1,and2,and3,and4,and5,/*AND6,AND7,OR8,AND9,*/and10,and11/*,AND12*/;
+    reg and0,and1,and2,and3,and4,and5,and10,and11;
    
     reg [5:0] direccion;
 
@@ -50,7 +49,7 @@ module Posicion_Mosaicos(
     if (resetM==1'b1)
         DATO_MOSAICO = 8'b00000000;
     else
-       SELEC_PX <= {1'b0,Qh[2],Qh[1],Qh[0]};//SELEC_PX <= {Qh[2],Qh[1],Qh[0]}
+       SELEC_PX <= {1'b0,Qh[2],Qh[1],Qh[0]};
        M_v <= {Qv[9],Qv[8],Qv[7],Qv[6],Qv[5],Qv[4]};
        M_h <= {Qh[9],Qh[8],Qh[7],Qh[6],Qh[5],Qh[4],Qh[3]};
        direccion <= {CARACTER,Qv[3],Qv[2],Qv[1],Qv[0]};
@@ -72,7 +71,7 @@ module Posicion_Mosaicos(
              6'h0d: DATO_MOSAICO <= 8'b00000000;
              6'h0e: DATO_MOSAICO <= 8'b00000000;
              6'h0f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
+             default: DATO_MOSAICO <= 8'b00000000;
           endcase
       else
       if (CARACTER == 2'b01)
@@ -93,7 +92,7 @@ module Posicion_Mosaicos(
              6'h1d: DATO_MOSAICO <= 8'b01101100;
              6'h1e: DATO_MOSAICO <= 8'b11111000;
              6'h1f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
+             default: DATO_MOSAICO <= 8'b00000000;
 
          endcase
       else
@@ -115,7 +114,7 @@ module Posicion_Mosaicos(
              6'h2d: DATO_MOSAICO <= 8'b11001100;
              6'h2e: DATO_MOSAICO <= 8'b01111000;
              6'h2f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
+             default: DATO_MOSAICO <= 8'b00000000;
 
          endcase
         
@@ -139,73 +138,15 @@ module Posicion_Mosaicos(
              6'h3d: DATO_MOSAICO <= 8'b00000000;
              6'h3e: DATO_MOSAICO <= 8'b00000000;
              6'h3f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
+             default: DATO_MOSAICO <= 8'b00000000;
 
         endcase
         else
             DATO_MOSAICO <= 8'b00000000;
     end
    
-    
-/*    always @(posedge reloj)
-        begin
-        //EJE H O X
-           //Primera D
-               if (M_h>=7'b0110010)
-                  and0 <= 1'b1;
-               else 
-                  and0 <= 1'b0;
-               if (M_h< 7'b0110011)
-                  and1 <= 1'b1;
-               else 
-                  and1 <= 1'b0;
-               //Compuerta AND para Primera D
-                  //AND6 = and0 & and1;
-      
-              //Segunda D    
-               if (M_h>=7'b0110100)
-                  and2 <= 1'b1;
-               else 
-                  and2 <= 1'b0;
-               if (M_h< 7'b0110101)
-                  and3 <= 1'b1;
-               else 
-                  and3 <= 1'b0;
-               //Compuerta AND Para Segunda D
-                  //AND7 = and2 & and3;
-               //Compuerta OR para Letra D
-                  //OR8 = AND6 | AND7;
-                   
-               // Primera J
-                 if (M_h >= 7'b0110110)
-                   and4 <= 1'b1;
-                 else 
-                   and4 <= 1'b0;
-                 if (M_h<7'b0110111)
-                   and5 <= 1'b1;
-                 else 
-                   and5 <= 1'b0; 
-                //Compuerta AND para J 
-                 // AND9 = and4 & and5;
-                  
-//********************************************************************
-            //Eje V O Y
-                 if (M_v >= 6'b010000)
-                    and10 <= 1'b1;
-                 else 
-                    and10 <= 1'b0;
-                 if (M_v < 6'b010001)
-                    and11 <= 1'b1;
-                 else
-                    and11 <= 1'b0;
-            //Compuerta AND Para Vertical
-                // AND12 = and10 & and11;
-                 LetraD <= ANDV & ORD;
-                 LetraJ <= ANDV & ANDJ;
+/*****************Circuito Combinacional Comparador, encargado de indicar donde y cuando activar la salida de datos de la memoria ROM************/    
 
-            
-             CARACTER <= {LetraJ,LetraD};
-        end*/
     always @(*)
             begin
             //EJE H O X
@@ -218,8 +159,6 @@ module Posicion_Mosaicos(
                       and1 <= 1'b1;
                    else 
                       and1 <= 1'b0;
-                   //Compuerta AND para Primera D
-                      //AND6 = and0 & and1;
           
                   //Segunda D    
                    if (M_h>=7'b0110100)
@@ -230,10 +169,6 @@ module Posicion_Mosaicos(
                       and3 <= 1'b1;
                    else 
                       and3 <= 1'b0;
-                   //Compuerta AND Para Segunda D
-                      //AND7 = and2 & and3;
-                   //Compuerta OR para Letra D
-                      //OR8 = AND6 | AND7;
                        
                    // Primera J
                      if (M_h >= 7'b0110110)
@@ -247,7 +182,7 @@ module Posicion_Mosaicos(
                     //Compuerta AND para J 
                      // AND9 = and4 & and5;
                       
-    //********************************************************************
+    /*********************************************************************/
                 //Eje V O Y
                      if (M_v >= 6'b010000)
                         and10 <= 1'b1;
@@ -278,11 +213,11 @@ module Posicion_Mosaicos(
                     assign ANDV = and10 & and11;
 
                              
-            
+    /*Circuito Combinacional Multiplexor encargado de dejar pasar el dato pasado por medio de la Memoria ROM dependiendo de la fila en la cual se encuentre el contador de pixeles*/        
     
     always @(SELEC_PX,DATO_MOSAICO[7],DATO_MOSAICO[6],DATO_MOSAICO[5],DATO_MOSAICO[4],
     DATO_MOSAICO[3],DATO_MOSAICO[2],DATO_MOSAICO[1],DATO_MOSAICO[0])
-    /*always @(posedge reloj)*/
+
 
          begin
             case (SELEC_PX)
@@ -297,23 +232,7 @@ module Posicion_Mosaicos(
               default: BIT_FUENTE <= 1'b0;
            endcase
         end
- /*   always @(SELEC_PX,DATO_MOSAICO[7],DATO_MOSAICO[6],DATO_MOSAICO[5],DATO_MOSAICO[4],
-        DATO_MOSAICO[3],DATO_MOSAICO[2],DATO_MOSAICO[1],DATO_MOSAICO[0])
-        
-    
-             begin
-                case (SELEC_PX)
-                  3'b000: BIT_FUENTE <=  DATO_MOSAICO[7];
-                  3'b001: BIT_FUENTE <=  DATO_MOSAICO[6];
-                  3'b010: BIT_FUENTE <=  DATO_MOSAICO[5];
-                  3'b011: BIT_FUENTE <=  DATO_MOSAICO[4];
-                  3'b100: BIT_FUENTE <=  DATO_MOSAICO[3];
-                  3'b101: BIT_FUENTE <=  DATO_MOSAICO[2];
-                  3'b110: BIT_FUENTE <=  DATO_MOSAICO[1];
-                  3'b111: BIT_FUENTE <=  DATO_MOSAICO[0];
-               endcase
-            end*/
-
+ 
         
         assign wire_BIT_FUENTE = BIT_FUENTE;
 
