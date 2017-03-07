@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 02/26/2017 08:07:31 AM
-// Design Name: 
-// Module Name: Texto_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 
 module Texto_tb(
@@ -37,8 +18,7 @@ module Texto_tb(
     
     Posicion_Mosaicos inst_Mosaico(
         .Qv(Qv_tb),.Qh(Qh_tb),.reloj(reloj_tb),
-        .wire_BIT_FUENTE(BIT_FUENTEtb),.ANDD1(ANDD1),
-        .ANDD2(ANDD2),.ORD(ORD),.ANDJ(ANDJ),.ANDV(ANDV)
+        .wire_BIT_FUENTE(BIT_FUENTEtb)
         );
 initial
     begin
