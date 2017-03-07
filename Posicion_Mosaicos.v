@@ -40,6 +40,7 @@ module Posicion_Mosaicos(
     reg LetraJ = 1'b0;
     //Compuertas 
     reg and0,and1,and2,and3,and4,and5,and10,and11;
+    wire ANDD1,ANDD2,ORD,ANDJ,ANDV;
    
     reg [5:0] direccion;
 
