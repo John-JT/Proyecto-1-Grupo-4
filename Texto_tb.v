@@ -5,9 +5,15 @@ module Texto_tb(
 
     );
     
+<<<<<<< HEAD
+    reg [9:0] Qh_tb;
+    reg [9:0] Qv_tb;
+    wire BIT_FUENTEtb;
+=======
     reg [9:0] Qh_tb;// = 10'b0000000000;
     reg [9:0] Qv_tb;// = 9'b000000000;
     wire BIT_FUENTEtb,ANDD1,ANDD2,ORD,ANDJ,ANDV;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
     reg reloj_tb;
     reg resetH =1'b0;
     integer i=0,j=0;
@@ -17,7 +23,11 @@ module Texto_tb(
      
     
     Posicion_Mosaicos inst_Mosaico(
+<<<<<<< HEAD
+        .Qv(Qv_tb),.Qh(Qh_tb),.resetM(resetH),.reloj(reloj_tb),
+=======
         .Qv(Qv_tb),.Qh(Qh_tb),.reloj(reloj_tb),
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
         .wire_BIT_FUENTE(BIT_FUENTEtb)
         );
 initial

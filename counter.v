@@ -1,4 +1,18 @@
 `timescale 1ns / 1ps
+<<<<<<< HEAD
+
+module counter(
+    output wire [9:0] Qh,
+    output wire [9:0] Qv,
+    output wire H_Sync,
+    output wire V_Sync,
+    output wire V_ON,
+    output wire H_ON,
+    input resetM,
+    input reloj,
+    output H_Sync2,
+    output V_Sync2
+=======
 
 //////////////////////////////////////////////////////////////////////////////////
 // Create Date: 02/27/2017 02:15:46 PM
@@ -19,6 +33,7 @@ module counter(
     output wire H_ON,     //Indica si horizontalmente estamos en zona de display
     input resetM,         //Reset maestro, resetea todo lo secuencial del circuito final
     input reloj           //clk de la fpga (100MHz)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
     );
   
     
@@ -138,6 +153,10 @@ reg V_ONreg;
  
  assign H_Sync = H_Syncreg;
  assign V_Sync = V_Syncreg;
+ assign H_Sync2 = H_Syncreg;
+ assign V_Sync2 = V_Syncreg;
+ 
+ 
  
  assign H_ON = H_ONreg;
  assign V_ON = V_ONreg;

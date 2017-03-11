@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+<<<<<<< HEAD
+=======
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -18,6 +20,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
 
 
 module TODO_tb(
@@ -27,7 +30,11 @@ module TODO_tb(
         reg reloj;
         reg resetM;
         reg Boton_B,Boton_R,Boton_G;
+<<<<<<< HEAD
+        wire H_Sync,H_Sync2,V_Sync,V_Sync2,BIT_FUENTE,H_ON,V_ON,R2,G2,B2;
+=======
         wire H_Sync,V_Sync,BIT_FUENTE,H_ON,V_ON;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
         wire [3:0] R;
         wire [3:0] G;
         wire [3:0] B;
@@ -42,7 +49,14 @@ module TODO_tb(
                 .V_ON(V_ON),
                 .H_ON(H_ON),
                 .resetM(resetM),
+<<<<<<< HEAD
+                .reloj(reloj),
+                .H_Sync2(H_Sync2),
+                .V_Sync2(V_Sync2)
+
+=======
                 .reloj(reloj)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
         );
          Posicion_Mosaicos inst_Mosaico(
                .Qv(Qv),
@@ -60,7 +74,15 @@ module TODO_tb(
                    .BotonB(Boton_B),
                    .BIT_FUENTE(BIT_FUENTE),
                    .H_ON(H_ON),
+<<<<<<< HEAD
+                   .V_ON(V_ON),
+                   .R2(R2),
+                   .B2(B2),
+                   .G2(G2)
+
+=======
                    .V_ON(V_ON)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
                    );
                    
         initial

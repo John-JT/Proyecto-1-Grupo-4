@@ -10,20 +10,40 @@ module Posicion_Mosaicos(
     output  wire_BIT_FUENTE
     );
     
+    
+    /*** Parametros***/
     parameter ROM_WIDTH = 8;
+    parameter D1L = 7'b0101011;
+    parameter D1U = 7'b0101100;
+    parameter D2U = 7'b0101101;
+    parameter JU =7'b0101110;
+    parameter VL = 6'b010000;
+    parameter VU = 6'b010001;
+    /*** Parametros***/
+    /*Variables de Tipo Registro*/
     reg [ROM_WIDTH-1:0] DATO_MOSAICO;
     reg [5:0] M_v;
     reg [6:0] M_h;
     reg [3:0] SELEC_PX; 
     reg [1:0]CARACTER;
     reg BIT_FUENTE;
+    reg [5:0] direccion;
+    /*Variables de Tipo Registro*/
     //Bit para Letras
     reg LetraD = 1'b0;
     reg LetraJ = 1'b0;
+<<<<<<< HEAD
+    /***Compuertas***/
+    reg and0,and1,and2,and3,and4,and5,and10,and11;
+    wire ANDD1, ANDD2,ANDJ,ANDV,ORD;
+    /***Compuertas***/
+
+=======
     //Compuertas 
     reg and0,and1,and2,and3,and4,and5,/*AND6,AND7,OR8,AND9,*/and10,and11/*,AND12*/;
     wire ANDD1, ANDD2,ANDJ,ANDV,ORD;
     reg [5:0] direccion;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
 
 
     always @(posedge reloj)
@@ -31,7 +51,7 @@ module Posicion_Mosaicos(
     if (resetM==1'b1)
         DATO_MOSAICO = 8'b00000000;
     else
-       SELEC_PX <= {1'b0,Qh[2],Qh[1],Qh[0]};//SELEC_PX <= {Qh[2],Qh[1],Qh[0]}
+       SELEC_PX <= {1'b0,Qh[2],Qh[1],Qh[0]};
        M_v <= {Qv[9],Qv[8],Qv[7],Qv[6],Qv[5],Qv[4]};
        M_h <= {Qh[9],Qh[8],Qh[7],Qh[6],Qh[5],Qh[4],Qh[3]};
        direccion <= {CARACTER,Qv[3],Qv[2],Qv[1],Qv[0]};
@@ -53,13 +73,16 @@ module Posicion_Mosaicos(
              6'h0d: DATO_MOSAICO <= 8'b00000000;
              6'h0e: DATO_MOSAICO <= 8'b00000000;
              6'h0f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
           endcase
       else
       if (CARACTER == 2'b01)
          case (direccion)
              6'h10: DATO_MOSAICO <= 8'b00000000;
+<<<<<<< HEAD
+             6'h11: DATO_MOSAICO <= 8'b01111000; 
+=======
              6'h11: DATO_MOSAICO <= 8'b01111000; //6'h11: DATO_MOSAICO <= 8'b01111000;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
              6'h12: DATO_MOSAICO <= 8'b01101100;
              6'h13: DATO_MOSAICO <= 8'b01100110;
              6'h14: DATO_MOSAICO <= 8'b01100110;
@@ -72,9 +95,12 @@ module Posicion_Mosaicos(
              6'h1b: DATO_MOSAICO <= 8'b01100110;
              6'h1c: DATO_MOSAICO <= 8'b01100110;
              6'h1d: DATO_MOSAICO <= 8'b01101100;
+<<<<<<< HEAD
+             6'h1e: DATO_MOSAICO <= 8'b01111000; 
+=======
              6'h1e: DATO_MOSAICO <= 8'b01111000; //6'h11: DATO_MOSAICO <= 8'b01111000;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
              6'h1f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
 
          endcase
       else
@@ -96,7 +122,6 @@ module Posicion_Mosaicos(
              6'h2d: DATO_MOSAICO <= 8'b11001100;
              6'h2e: DATO_MOSAICO <= 8'b01111000;
              6'h2f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
 
          endcase
         
@@ -120,7 +145,6 @@ module Posicion_Mosaicos(
              6'h3d: DATO_MOSAICO <= 8'b00000000;
              6'h3e: DATO_MOSAICO <= 8'b00000000;
              6'h3f: DATO_MOSAICO <= 8'b00000000;
-             //default: DATO_MOSAICO <= 8'b00000000;
 
         endcase
         else
@@ -133,58 +157,74 @@ module Posicion_Mosaicos(
             begin
             //EJE H O X
                //Primera D
+<<<<<<< HEAD
+                   if (M_h>=D1L)
+                      and0 <= 1'b1;
+                   else 
+                      and0 <= 1'b0;
+                   if (M_h< D1U)
+=======
                    if (M_h>=7'b0101011)
                       and0 <= 1'b1;
                    else 
                       and0 <= 1'b0;
                    if (M_h< 7'b0101100)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
                       and1 <= 1'b1;
                    else 
                       and1 <= 1'b0;
-                   //Compuerta AND para Primera D
-                      //AND6 = and0 & and1;
           
                   //Segunda D    
+<<<<<<< HEAD
+                   if (M_h>=D1U)
+                      and2 <= 1'b1;
+                   else 
+                      and2 <= 1'b0;
+                   if (M_h< D2U)
+=======
                    if (M_h>=7'b0101100)
                       and2 <= 1'b1;
                    else 
                       and2 <= 1'b0;
                    if (M_h< 7'b0101101)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
                       and3 <= 1'b1;
                    else 
                       and3 <= 1'b0;
-                   //Compuerta AND Para Segunda D
-                      //AND7 = and2 & and3;
-                   //Compuerta OR para Letra D
-                      //OR8 = AND6 | AND7;
                        
+<<<<<<< HEAD
+                   //Primera J
+                     if (M_h >= D2U)
+                       and4 <= 1'b1;
+                     else 
+                       and4 <= 1'b0;
+                     if (M_h<JU)
+=======
                    // Primera J
                      if (M_h >= 7'b0101101)
                        and4 <= 1'b1;
                      else 
                        and4 <= 1'b0;
                      if (M_h<7'b0101110)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
                        and5 <= 1'b1;
                      else 
                        and5 <= 1'b0; 
-                    //Compuerta AND para J 
-                     // AND9 = and4 & and5;
                       
-    //********************************************************************
+    /*********************************************************************/
                 //Eje V O Y
-                     if (M_v >= 6'b010000)
+                     if (M_v >= VL)
                         and10 <= 1'b1;
                      else 
                         and10 <= 1'b0;
-                     if (M_v < 6'b010001)
+                     if (M_v < VU)
                         and11 <= 1'b1;
                      else
                         and11 <= 1'b0;
-                //Compuerta AND Para Vertical
-                    // AND12 = and10 & and11;
+                        
+     /******************Compuertas para la validar la impresion de caracteres*****************/   
                      LetraD <= ANDV & ORD;
                      LetraJ <= ANDV & ANDJ;
-    
                 
                  CARACTER <= {LetraJ,LetraD};
             end
@@ -199,14 +239,15 @@ module Posicion_Mosaicos(
                     assign ANDJ = and4 & and5;
               //Compuerta AND Para Vertical
                     assign ANDV = and10 & and11;
-
-                             
-            
+      
     
     always @(SELEC_PX,DATO_MOSAICO[7],DATO_MOSAICO[6],DATO_MOSAICO[5],DATO_MOSAICO[4],
     DATO_MOSAICO[3],DATO_MOSAICO[2],DATO_MOSAICO[1],DATO_MOSAICO[0])
     
+<<<<<<< HEAD
+=======
 
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
          begin
             case (SELEC_PX)
               4'b0000: BIT_FUENTE <=  DATO_MOSAICO[7];
@@ -220,9 +261,11 @@ module Posicion_Mosaicos(
               default: BIT_FUENTE <= 1'b0;
            endcase
         end
+<<<<<<< HEAD
+=======
 
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
 
-        
         assign wire_BIT_FUENTE = BIT_FUENTE;
 
 endmodule

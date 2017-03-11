@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+<<<<<<< HEAD
+=======
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -18,6 +20,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
 
 
 module counter_tb(
@@ -25,8 +28,13 @@ module counter_tb(
     );
      wire [9:0] Qh;
      wire [9:0] Qv;
+<<<<<<< HEAD
+     wire H_Sync, H_Sync2;
+     wire V_Sync, V_Sync2;
+=======
      wire H_Sync;
      wire V_Sync;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
      wire V_ON;
      wire H_ON;
      reg resetM;
@@ -42,7 +50,13 @@ module counter_tb(
                 .V_ON(V_ON),
                 .H_ON(H_ON),
                 .resetM(resetM),
+<<<<<<< HEAD
+                .reloj(reloj),
+                .H_Sync2(H_Sync2),
+                .V_Sync2(V_Sync2)
+=======
                 .reloj(reloj)
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
         );
 initial
             
@@ -54,7 +68,11 @@ initial
             
             always
             begin
+<<<<<<< HEAD
+            #5 reloj = ~reloj;
+=======
             #10 reloj = ~reloj;
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
             end
 
 endmodule

@@ -82,3 +82,37 @@ set_property IOSTANDARD LVCMOS33 [get_ports V_Sync]
 
 set_property CONFIG_VOLTAGE 2.5 [current_design]
 set_property CFGBVS VCCO [current_design]
+<<<<<<< HEAD
+
+
+##SALIDAS AL ANALIZADOR LOGICO
+ 
+##Pmod Header JA
+    ##Bank = 15, Pin name = IO_L1N_T0_AD0N_15,                    Sch name = JA1
+     set_property PACKAGE_PIN B13 [get_ports {BIT_FUENTE}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {BIT_FUENTE}]
+    ##Bank = 15, Pin name = IO_L5N_T0_AD9N_15,                    Sch name = JA2
+    set_property PACKAGE_PIN F14 [get_ports {H_Sync2}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {H_Sync2}]
+    ##Bank = 15, Pin name = IO_L16N_T2_A27_15,                    Sch name = JA3
+    set_property PACKAGE_PIN D17 [get_ports {V_Sync2}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {V_Sync2}]
+    ##Bank = 15, Pin name = IO_L16P_T2_A28_15,                    Sch name = JA4
+    set_property PACKAGE_PIN E17 [get_ports {H_ON}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {H_ON}]
+    ##Bank = 15, Pin name = IO_0_15,                                Sch name = JA7
+    set_property PACKAGE_PIN G13 [get_ports {V_ON}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {V_ON}]
+    ##Bank = 15, Pin name = IO_L20N_T3_A19_15,                    Sch name = JA8
+    set_property PACKAGE_PIN C17 [get_ports {R2}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {R2}]
+    ##Bank = 15, Pin name = IO_L21N_T3_A17_15,                    Sch name = JA9
+    set_property PACKAGE_PIN D18 [get_ports {G2}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {G2}]
+    ##Bank = 15, Pin name = IO_L21P_T3_DQS_15,                    Sch name = JA10
+    set_property PACKAGE_PIN E18 [get_ports {B2}]                    
+        set_property IOSTANDARD LVCMOS33 [get_ports {B2}]
+        
+##SALIDAS AL ANALIZADOR LOGICO
+=======
+>>>>>>> 577cc9a1689b628be444f2603bb3fba1a29a7b4d
